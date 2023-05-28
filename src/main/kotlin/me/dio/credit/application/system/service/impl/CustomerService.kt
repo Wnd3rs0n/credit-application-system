@@ -6,7 +6,7 @@ import me.dio.credit.application.system.service.ICustomerService
 import org.springframework.stereotype.Service
 
 @Service
-class CustomerServic(
+class CustomerService(
         private val customerRepository: CustomerRepository
 ) : ICustomerService {
 
@@ -14,10 +14,8 @@ class CustomerServic(
             this.customerRepository.save(customer)
 
 
-    override fun findById(id: Long): Customer = this.customerRepository.findById(id).orElseThrow {
-        throw RuntimeException("ID $id not found")
-
-    }
+    override fun findById(id: Long): Customer = this.customerRepository.findById(id)
+            .orElseThrow {throw RuntimeException("ID $id not found")}
 
     override fun delete(id: Long) = this.customerRepository.deleteById(id)
 
