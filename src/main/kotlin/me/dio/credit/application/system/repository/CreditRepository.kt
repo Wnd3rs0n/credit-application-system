@@ -15,4 +15,5 @@ interface CreditRepository : JpaRepository<Credit, Long> {
     fun findAllByCustomerId (customerId: Long): List<Credit>
 
 
+
 }
